@@ -12,8 +12,8 @@ import adafruit_displayio_sh1107
 import adafruit_aw9523
 import adafruit_requests as requests
 from adafruit_esp32spi import adafruit_esp32spi
-import adafruit_esp32spi.adafruit_esp32spi_socket as esp_socket
 
+# import adafruit_esp32spi.adafruit_esp32spi_socket as esp_socket
 
 
 def esp_reset():
@@ -148,7 +148,7 @@ async def string_lights(interval, max_curr):
 
 
 # Fades all lights on one after the other, then
-# fades them off one after another
+# fades them down one after another
 async def string_lights_1(interval, max_curr):
     while True:
         for i in range(len(window_set_1)):
@@ -220,7 +220,7 @@ async def main():
         led5_task,
         led6_task,
         led7_task,
-        button_task
+        button_task,
     )
 
 
@@ -297,8 +297,6 @@ while True:
     except RuntimeError as e:
         print("ESP Wi-Fi Error:", e)
         esp_reset()
-
-
 
 
 display_bus = displayio.I2CDisplay(i2c, device_address=0x3C)
